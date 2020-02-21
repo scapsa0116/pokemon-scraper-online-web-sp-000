@@ -18,13 +18,13 @@ class Pokemon
     pokemon = database_connection.execute("SELECT * FROM pokemon WHERE id = ?", id).flatten
     name = pokemon[1]
     type = pokemon[2]
-    hp = pokemon[3]
+  
 
-    pokemon_inst = Pokemon.new(id: id, name: name, type: type, hp: hp, db: database_connection)
+    pokemon_inst = Pokemon.new(id: id, name: name, type: type, db: database_connection)
   end
 
-  def alter_hp(new_hp, database_connection)
-    database_connection.execute("UPDATE pokemon SET hp = ? WHERE id = ?", new_hp, @id)
+  def alter_hp( database_connection)
+    database_connection.execute("UPDATE pokemon SET hp = ? WHERE id = ?", @id)
   end
 
 end
